@@ -7,6 +7,7 @@ import {
   TableHead,
   TableCell,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const useStyle = makeStyles({
   create: {
@@ -26,9 +27,11 @@ function Categories() {
   const array = ["react", "css", "javascript", "node.js", "mongodb"];
   return (
     <>
-      <Button variant="contained" className={classes.create}>
-        Create Blog
-      </Button>
+      <Link to="/create" style={{ textDecoration: "none", color: "inherit" }}>
+        <Button variant="contained" className={classes.create}>
+          Create Blog
+        </Button>
+      </Link>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
