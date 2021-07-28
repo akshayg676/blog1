@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { createPostApi } from "../../service/api";
 import {
   Box,
   makeStyles,
@@ -7,6 +9,7 @@ import {
   TextareaAutosize,
 } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -47,8 +50,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const initialValues = {
+  title: "",
+  description: "",
+  picture: "",
+  username: "akshay",
+  categories: "All",
+  createDate: new Date(),
+};
+
 function CreatePost() {
   const classes = useStyles();
+  const [post, setPost] = useState(initialValues);
+  const history = useHistory();
+
+  const handleChange = (e) => {
+    setPost({ ...post, [e.target.name]: e.target.value });
+  };
+
+  const savePost = async () => {
+    await createPostApi(post);
+    history.push("/");
+  };
   return (
     <Box className={classes.container}>
       <img
@@ -58,15 +81,22 @@ function CreatePost() {
       />
       <FormControl className={classes.form}>
         <AddCircleIcon fontSize="large" color="action" />
-        <InputBase placeholder="Title" className={classes.textField} />
-        <Button variant="contained" color="primary">
+        <InputBase
+          onChange={(e) => handleChange(e)}
+          placeholder="Title"
+          className={classes.textField}
+          name="title"
+        />
+        <Button onClick={() => savePost()} variant="contained" color="primary">
           Publish
         </Button>
       </FormControl>
       <TextareaAutosize
-        rowsMin={5}
+        onChange={(e) => handleChange(e)}
+        minRows={5}
         placeholder="Tell your story"
         className={classes.textarea}
+        name="description"
       />
     </Box>
   );

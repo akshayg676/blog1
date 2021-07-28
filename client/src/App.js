@@ -13,7 +13,7 @@ function App() {
       <Box style={{ marginTop: 64 }}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/details" component={DetailedPost} />
+          <Route path="/details/:id" component={DetailedPost} />
           <Route path="/create" component={CreatePost} />
           <Route path="/update" component={UpdatePost} />
         </Switch>

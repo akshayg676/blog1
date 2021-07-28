@@ -1,16 +1,26 @@
+import { useState, useEffect } from "react";
 import Post from "./Post";
 import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { getAllPosts } from "../../service/api.js";
 
 function Posts() {
-  const array = [1, 2, 3, 4, 5, 6, 6, 6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 44];
-  return array.map((post) => (
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let data = await getAllPosts();
+      setPosts(data);
+    };
+    fetchData();
+  }, []);
+  return posts.map((post) => (
     <Grid item lg={3} sm={4} xs={12}>
       <Link
-        to={"/details"}
+        to={`/details/${post._id}`}
         style={{ textDecoration: "none", color: "inherit" }}
       >
-        <Post />
+        <Post post={post} />
       </Link>
     </Grid>
   ));
