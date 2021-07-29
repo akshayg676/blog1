@@ -27,3 +27,11 @@ export const getPost = async (id) => {
     console.log("Error while getting singlepost", error);
   }
 };
+
+export const updatePost = async (id, post) => {
+  try {
+    await axios.put(`${URL}/update/${id}`, post);
+  } catch (error) {
+    console.log("Error while updating post", error);
+  }
+};

@@ -67,7 +67,7 @@ function DetailedPost({ match }) {
     <Box className={classes.container}>
       <img className={classes.image} src={post.picture || url} alt="" />
       <Box className={classes.icons}>
-        <Link to="/update">
+        <Link to={`/update/${post._id}`}>
           <Edit className={classes.icon} color="primary" />
         </Link>
         <Delete className={classes.icon} color="error" />

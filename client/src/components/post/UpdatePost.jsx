@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   Box,
   makeStyles,
@@ -7,6 +8,7 @@ import {
   TextareaAutosize,
 } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import { updatePost } from "../../service/api";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -47,8 +49,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function UpdatePost() {
+const initialValues = {
+  title: "",
+  description: "",
+  picture: "",
+  username: "akshay",
+  categories: "All",
+  createDate: new Date(),
+};
+
+function UpdatePost({ match }) {
   const classes = useStyles();
+
+  const [post, setPost] = useState({ initialValues });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let data = await getPost(match.params.id);
+      setPost(data);
+      console.log(data);
+    };
+    fetchData();
+  }, []);
+
+  const handleChange = (e) => {
+    setPost({ ...post, [e.target.name]: e.target.value });
+  };
+
+  const updatePost = async () => {
+    await updatePost(match.params.id, post);
+  };
+
   return (
     <Box className={classes.container}>
       <img
@@ -58,15 +89,28 @@ function UpdatePost() {
       />
       <FormControl className={classes.form}>
         <AddCircleIcon fontSize="large" color="action" />
-        <InputBase placeholder="Title" className={classes.textField} />
-        <Button variant="contained" color="primary">
+        <InputBase
+          placeholder="Title"
+          name="title"
+          value={post.title}
+          className={classes.textField}
+          onChange={(e) => handleChange(e)}
+        />
+        <Button
+          onClick={() => updatePost()}
+          variant="contained"
+          color="primary"
+        >
           Update
         </Button>
       </FormControl>
       <TextareaAutosize
         rowsMin={5}
         placeholder="Tell your story"
+        name="description"
         className={classes.textarea}
+        value={post.description}
+        onChange={(e) => handleChange(e)}
       />
     </Box>
   );
