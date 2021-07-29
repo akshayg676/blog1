@@ -20,6 +20,10 @@ const useStyle = makeStyles({
   table: {
     border: "1px solid darkgrey",
   },
+  link: {
+    textDecoration: "none",
+    color: "inherit",
+  },
 });
 
 function Categories() {
@@ -27,7 +31,7 @@ function Categories() {
   const array = ["react", "css", "javascript", "node.js", "mongodb"];
   return (
     <>
-      <Link to="/create" style={{ textDecoration: "none", color: "inherit" }}>
+      <Link to="/create" className={classes.link}>
         <Button variant="contained" className={classes.create}>
           Create Blog
         </Button>
@@ -36,14 +40,20 @@ function Categories() {
         <TableHead>
           <TableRow>
             <TableCell style={{ textAlign: "center" }}>
-              All Categories
+              <Link to={"/"} className={classes.link}>
+                All Categories
+              </Link>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {array.map((items) => (
             <TableRow>
-              <TableCell style={{ textAlign: "center" }}>{items}</TableCell>
+              <TableCell style={{ textAlign: "center" }}>
+                <Link to={`/?category=${items}`} className={classes.link}>
+                  {items}
+                </Link>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

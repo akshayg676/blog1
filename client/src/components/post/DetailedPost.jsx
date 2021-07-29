@@ -47,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
+  link: {
+    textDecoration: "none",
+    color: "inherit",
+  },
 }));
 
 function DetailedPost({ match }) {
@@ -85,9 +89,11 @@ function DetailedPost({ match }) {
       </Box>
       <Typography className={classes.heading}>{post.title}</Typography>
       <Box className={classes.subHeading}>
-        <Typography>
-          Author: <span style={{ fontWeight: 600 }}>{post.username}</span>
-        </Typography>
+        <Link to={`/?username=${post.username}`} className={classes.link}>
+          <Typography>
+            Author: <span style={{ fontWeight: 600 }}>{post.username}</span>
+          </Typography>
+        </Link>
         <Typography>{new Date(post.createDate).toDateString()}</Typography>
       </Box>
       <Typography>{post.description}</Typography>

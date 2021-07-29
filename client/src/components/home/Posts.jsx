@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
 import Post from "./Post";
 import { Grid } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getAllPosts } from "../../service/api.js";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
+  const { search } = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
-      let data = await getAllPosts();
+      let data = await getAllPosts(search);
       setPosts(data);
+      console.log(posts);
     };
     fetchData();
   }, []);
