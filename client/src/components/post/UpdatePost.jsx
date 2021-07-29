@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { getPost, updatePost } from "../../service/api";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "100%",
     height: "50vh",
-    objectFit: "fill",
+    objectFit: "contain",
     [theme.breakpoints.down("xs")]: {
       objectFit: "contain",
     },
@@ -60,6 +61,7 @@ const initialValues = {
 
 function UpdatePost({ match }) {
   const classes = useStyles();
+  const history = useHistory();
 
   const [post, setPost] = useState(initialValues);
 
@@ -77,6 +79,7 @@ function UpdatePost({ match }) {
 
   const updateBlog = async () => {
     await updatePost(match.params.id, post);
+    history.push(`/details/${match.params.id}`);
   };
 
   return (

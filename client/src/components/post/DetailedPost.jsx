@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Box, makeStyles, Typography } from "@material-ui/core";
 import { Edit, Delete } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { getPost } from "../../service/api.js";
+import { getPost, deletePost } from "../../service/api.js";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "100%",
     height: "50vh",
-    objectFit: "fill",
+    objectFit: "contain",
     [theme.breakpoints.down("xs")]: {
       objectFit: "contain",
     },
@@ -52,6 +53,7 @@ function DetailedPost({ match }) {
   const classes = useStyles();
   const url =
     "https://t4.ftcdn.net/jpg/02/84/64/51/360_F_284645131_hE2W3bbPxFBkk2aNqNyiTgLiraaiAuDh.jpg";
+  const history = useHistory();
 
   const [post, setPost] = useState({});
 
@@ -63,6 +65,11 @@ function DetailedPost({ match }) {
     fetchData();
   }, []);
 
+  const deleteBlog = async () => {
+    await deletePost(post._id);
+    history.push("/");
+  };
+
   return (
     <Box className={classes.container}>
       <img className={classes.image} src={post.picture || url} alt="" />
@@ -70,7 +77,11 @@ function DetailedPost({ match }) {
         <Link to={`/update/${post._id}`}>
           <Edit className={classes.icon} color="primary" />
         </Link>
-        <Delete className={classes.icon} color="error" />
+        <Delete
+          onClick={() => deleteBlog()}
+          className={classes.icon}
+          color="error"
+        />
       </Box>
       <Typography className={classes.heading}>{post.title}</Typography>
       <Box className={classes.subHeading}>

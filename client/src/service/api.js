@@ -35,3 +35,11 @@ export const updatePost = async (id, post) => {
     console.log("Error while updating post", error);
   }
 };
+
+export const deletePost = async (id) => {
+  try {
+    await axios.delete(`${URL}/delete/${id}`);
+  } catch (error) {
+    console.log("Error while deleting post", error);
+  }
+};

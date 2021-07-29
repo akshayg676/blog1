@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "100%",
     height: "50vh",
-    objectFit: "fill",
+    objectFit: "contain",
     [theme.breakpoints.down("xs")]: {
       objectFit: "contain",
     },
