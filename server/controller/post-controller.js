@@ -28,3 +28,12 @@ export const getPost = async (request, response) => {
     response.status(500).json(error);
   }
 };
+
+export const updatePost = async (request, response) => {
+  try {
+    await Post.findByIdAndUpdate(request.params.id, { $set: request.body });
+    response.status(500).response("blog updated successfully");
+  } catch (error) {
+    response.status(500).json(error);
+  }
+};

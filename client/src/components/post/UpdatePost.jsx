@@ -8,7 +8,7 @@ import {
   TextareaAutosize,
 } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
-import { updatePost } from "../../service/api";
+import { getPost, updatePost } from "../../service/api";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -61,13 +61,12 @@ const initialValues = {
 function UpdatePost({ match }) {
   const classes = useStyles();
 
-  const [post, setPost] = useState({ initialValues });
+  const [post, setPost] = useState(initialValues);
 
   useEffect(() => {
     const fetchData = async () => {
       let data = await getPost(match.params.id);
       setPost(data);
-      console.log(data);
     };
     fetchData();
   }, []);
@@ -76,7 +75,7 @@ function UpdatePost({ match }) {
     setPost({ ...post, [e.target.name]: e.target.value });
   };
 
-  const updatePost = async () => {
+  const updateBlog = async () => {
     await updatePost(match.params.id, post);
   };
 
@@ -97,7 +96,7 @@ function UpdatePost({ match }) {
           onChange={(e) => handleChange(e)}
         />
         <Button
-          onClick={() => updatePost()}
+          onClick={() => updateBlog()}
           variant="contained"
           color="primary"
         >
