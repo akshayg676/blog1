@@ -23,6 +23,8 @@ const useStyles = makeStyles({
   },
   heading: {
     fontSize: 18,
+    fontWeight: 600,
+    textAlign: "center",
   },
   detail: {
     fontSize: 14,

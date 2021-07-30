@@ -80,7 +80,15 @@ function CreatePost() {
         alt=""
       />
       <FormControl className={classes.form}>
-        <AddCircleIcon fontSize="large" color="action" />
+        <label htmlFor="fileInput">
+          {" "}
+          <AddCircleIcon
+            fontSize="large"
+            color="action"
+            style={{ cursor: "pointer" }}
+          />
+        </label>
+        <input type="file" id="fileInput" style={{ display: "none" }} />
         <InputBase
           onChange={(e) => handleChange(e)}
           placeholder="Title"
