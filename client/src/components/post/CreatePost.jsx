@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { createPostApi } from "../../service/api";
+import { useState, useEffect } from "react";
+import { createPostApi, uploadFile } from "../../service/api";
 import {
   Box,
   makeStyles,
@@ -61,8 +61,24 @@ const initialValues = {
 
 function CreatePost() {
   const classes = useStyles();
+
   const [post, setPost] = useState(initialValues);
+  const [file, setFile] = useState("");
+
   const history = useHistory();
+
+  useEffect(() => {
+    const getImage = async () => {
+      if (file) {
+        const data = new FormData();
+        data.append("name", file.name);
+        data.append("file", file);
+
+        await uploadFile(data);
+      }
+    };
+    getImage();
+  }, [file]);
 
   const handleChange = (e) => {
     setPost({ ...post, [e.target.name]: e.target.value });
@@ -81,14 +97,18 @@ function CreatePost() {
       />
       <FormControl className={classes.form}>
         <label htmlFor="fileInput">
-          {" "}
           <AddCircleIcon
             fontSize="large"
             color="action"
             style={{ cursor: "pointer" }}
           />
         </label>
-        <input type="file" id="fileInput" style={{ display: "none" }} />
+        <input
+          onChange={(e) => setFile(e.target.files[0])}
+          type="file"
+          id="fileInput"
+          style={{ display: "none" }}
+        />
         <InputBase
           onChange={(e) => handleChange(e)}
           placeholder="Title"

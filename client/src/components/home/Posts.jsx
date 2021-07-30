@@ -12,7 +12,6 @@ function Posts() {
     const fetchData = async () => {
       let data = await getAllPosts(search);
       setPosts(data);
-      console.log(posts);
     };
     fetchData();
   }, []);
