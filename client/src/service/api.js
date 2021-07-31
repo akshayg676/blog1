@@ -31,7 +31,7 @@ export const getPost = async (id) => {
 
 export const updatePost = async (id, post) => {
   try {
-    await axios.post(`${URL}/update/${id}`, post);
+    return await axios.post(`${URL}/update/${id}`, post);
   } catch (error) {
     console.log("Error while updating post", error);
   }
