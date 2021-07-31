@@ -78,7 +78,6 @@ function CreatePost() {
         data.append("file", file);
 
         const image = await uploadFile(data);
-        console.log(image);
         post.picture = image.data;
         setImage(image.data);
       }

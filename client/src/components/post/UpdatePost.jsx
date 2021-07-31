@@ -79,7 +79,6 @@ function UpdatePost({ match }) {
         data.append("file", file);
 
         const image = await uploadFile(data);
-        console.log(image);
         post.picture = image.data;
         setImage(image.data);
       }
@@ -120,7 +119,7 @@ function UpdatePost({ match }) {
           type="file"
           id="fileInput"
           style={{ display: "none" }}
-        />{" "}
+        />
         <InputBase
           placeholder="Title"
           name="title"
