@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <Banner />
-      <Grid container style={{ marginBottom: 50 }}>
+      <Grid container>
         <Grid item lg={2} xs={12} sm={2}>
           <Categories />
         </Grid>

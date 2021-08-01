@@ -19,6 +19,7 @@ const useStyle = makeStyles({
   },
   table: {
     border: "1px solid darkgrey",
+    marginLeft: 4,
   },
   link: {
     textDecoration: "none",

@@ -8,6 +8,7 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
+    border: "1px solid darkgrey",
     "& > *": {
       padding: "0 5px 5px 5px",
     },
@@ -36,13 +37,21 @@ function Post({ post }) {
   const url =
     post.picture ||
     "https://t4.ftcdn.net/jpg/02/84/64/51/360_F_284645131_hE2W3bbPxFBkk2aNqNyiTgLiraaiAuDh.jpg";
+
+  const addElipsis = (str) => {
+    return str.length > 80 ? str.substring(0, 80) : str;
+  };
   return (
     <Box className={classes.container}>
       <img className={classes.image} src={url} alt="" />
       <Typography className={classes.text}>{post.categories}</Typography>
-      <Typography className={classes.heading}>{post.title}</Typography>
+      <Typography className={classes.heading}>
+        {addElipsis(post.title)}
+      </Typography>
       <Typography className={classes.text}>author: {post.username}</Typography>
-      <Typography className={classes.detail}>{post.description}</Typography>
+      <Typography className={classes.detail}>
+        {addElipsis(post.description)}
+      </Typography>
     </Box>
   );
 }
