@@ -6,6 +6,7 @@ import {
   updatePost,
   deletePost,
 } from "../controller/post-controller.js";
+import { newComment } from "../controller/comment-controller.js";
 import { uploadImage, getImage } from "../controller/image-controller.js";
 import upload from "../utils/upload.js";
 
@@ -19,5 +20,7 @@ router.delete("/delete/:id", deletePost);
 
 router.post("/file/upload", upload.single("file"), uploadImage);
 router.get("/file/:filename", getImage);
+
+router.post("/comment/new", newComment);
 
 export default router;
