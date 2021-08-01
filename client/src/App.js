@@ -1,15 +1,18 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Box } from "@material-ui/core";
-import Header from "./components/header/Header.jsx";
-import Home from "./components/home/Home.jsx";
-import DetailedPost from "./components/post/DetailedPost.jsx";
-import CreatePost from "./components/post/CreatePost.jsx";
-import UpdatePost from "./components/post/UpdatePost.jsx";
+import AppWithRouterAccess from "./AppWithRouterAccess";
+
+// import Header from "./components/header/Header.jsx";
+// import Home from "./components/home/Home.jsx";
+// import DetailedPost from "./components/post/DetailedPost.jsx";
+// import CreatePost from "./components/post/CreatePost.jsx";
+// import UpdatePost from "./components/post/UpdatePost.jsx";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <AppWithRouterAccess />
+      {/* <Header />
       <Box style={{ marginTop: 64 }}>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -17,7 +20,7 @@ function App() {
           <Route path="/create" component={CreatePost} />
           <Route path="/update/:id" component={UpdatePost} />
         </Switch>
-      </Box>
+      </Box> */}
     </BrowserRouter>
   );
 }
