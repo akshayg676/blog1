@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { getPost, deletePost } from "../../service/api.js";
 import { useHistory } from "react-router-dom";
 
+import Comments from "../comments/Comments.js";
+
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: "0 100px",
@@ -97,6 +99,7 @@ function DetailedPost({ match }) {
         <Typography>{new Date(post.createDate).toDateString()}</Typography>
       </Box>
       <Typography>{post.description}</Typography>
+      <Comments post={post} />
     </Box>
   );
 }
