@@ -38,19 +38,19 @@ function Post({ post }) {
     post.picture ||
     "https://t4.ftcdn.net/jpg/02/84/64/51/360_F_284645131_hE2W3bbPxFBkk2aNqNyiTgLiraaiAuDh.jpg";
 
-  const addElipsis = (str) => {
-    return str.length > 80 ? str.substring(0, 80) : str;
+  const addElipsis = (str, limit) => {
+    return str.length > limit ? str.substring(0, limit) + "..." : str;
   };
   return (
     <Box className={classes.container}>
       <img className={classes.image} src={url} alt="" />
       <Typography className={classes.text}>{post.categories}</Typography>
       <Typography className={classes.heading}>
-        {addElipsis(post.title)}
+        {addElipsis(post.title, 50)}
       </Typography>
       <Typography className={classes.text}>author: {post.username}</Typography>
       <Typography className={classes.detail}>
-        {addElipsis(post.description)}
+        {addElipsis(post.description, 100)}
       </Typography>
     </Box>
   );
