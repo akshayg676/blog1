@@ -1,6 +1,6 @@
 import { Typography, Box, makeStyles } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
-import axios from "axios";
+import { deleteComment } from "../../service/api.js";
 
 const useStyles = makeStyles({
   component: {
@@ -27,10 +27,13 @@ const useStyles = makeStyles({
   },
 });
 
-const removeComment = async () => {};
-
-const Comment = ({ comment, toggle }) => {
+const Comment = ({ comment, setToggle }) => {
   const classes = useStyles();
+
+  const removeComment = async () => {
+    await deleteComment(comment._id);
+    setToggle((prev) => !prev);
+  };
   return (
     <Box className={classes.component}>
       <Box className={classes.container}>

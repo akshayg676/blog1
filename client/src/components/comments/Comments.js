@@ -81,7 +81,7 @@ function Comments({ post }) {
       </Box>
       {comments &&
         comments.map((comment) => (
-          <Comment comment={comment} toggle={toggle} />
+          <Comment comment={comment} setToggle={setToggle} />
         ))}
     </Box>
   );

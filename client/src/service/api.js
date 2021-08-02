@@ -69,3 +69,11 @@ export const getComment = async (id) => {
     console.log("Error while getCommentsApi comments", error);
   }
 };
+
+export const deleteComment = async (id) => {
+  try {
+    return await axios.delete(`${URL}/comment/delete/${id}`);
+  } catch (error) {
+    console.log("Error while deleting comment", error);
+  }
+};

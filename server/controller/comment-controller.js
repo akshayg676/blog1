@@ -18,3 +18,12 @@ export const getComments = async (request, response) => {
     response.status(500).json(error);
   }
 };
+
+export const deleteComment = async (request, response) => {
+  try {
+    const comment = await Comment.findByIdAndDelete(request.params.id);
+    response.status(200).json("comment deleted successfully");
+  } catch (error) {
+    response.status(500).json(error);
+  }
+};
