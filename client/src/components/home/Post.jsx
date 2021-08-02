@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     "& > *": {
       padding: "0 5px 5px 5px",
     },
+    overflow: "hidden",
   },
   image: {
     width: "100%",

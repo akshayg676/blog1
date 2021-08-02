@@ -1,6 +1,9 @@
 import { Box, TextareaAutosize, Button, makeStyles } from "@material-ui/core";
 import { useState, useEffect } from "react";
 import { newComment, getComment } from "../../service/api";
+
+import Comment from "./Comment.jsx";
+
 const useStyles = makeStyles({
   component: {
     marginTop: 100,
@@ -40,7 +43,7 @@ function Comments({ post }) {
       setComments(response);
     };
     getData();
-  }, []);
+  }, [post]);
 
   const handleChange = (e) => {
     setComment({
@@ -74,6 +77,7 @@ function Comments({ post }) {
           Post
         </Button>
       </Box>
+      {comments && comments.map((comment) => <Comment comment={comment} />)}
     </Box>
   );
 }

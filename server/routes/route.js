@@ -22,6 +22,6 @@ router.post("/file/upload", upload.single("file"), uploadImage);
 router.get("/file/:filename", getImage);
 
 router.post("/comment/new", newComment);
-router.post("/comment/:id", getComments);
+router.get("/comment/:id", getComments);
 
 export default router;
