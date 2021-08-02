@@ -36,6 +36,7 @@ function Comments({ post }) {
 
   const [comment, setComment] = useState(initialValue);
   const [comments, setComments] = useState([]);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -43,7 +44,7 @@ function Comments({ post }) {
       setComments(response);
     };
     getData();
-  }, [post]);
+  }, [post, toggle]);
 
   const handleChange = (e) => {
     setComment({
@@ -56,6 +57,7 @@ function Comments({ post }) {
 
   const postComment = async () => {
     await newComment(comment);
+    setToggle((prev) => !prev);
   };
 
   return (
@@ -77,7 +79,10 @@ function Comments({ post }) {
           Post
         </Button>
       </Box>
-      {comments && comments.map((comment) => <Comment comment={comment} />)}
+      {comments &&
+        comments.map((comment) => (
+          <Comment comment={comment} toggle={toggle} />
+        ))}
     </Box>
   );
 }

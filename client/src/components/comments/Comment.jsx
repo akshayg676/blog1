@@ -1,5 +1,6 @@
 import { Typography, Box, makeStyles } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
+import axios from "axios";
 
 const useStyles = makeStyles({
   component: {
@@ -26,7 +27,9 @@ const useStyles = makeStyles({
   },
 });
 
-const Comment = ({ comment }) => {
+const removeComment = async () => {};
+
+const Comment = ({ comment, toggle }) => {
   const classes = useStyles();
   return (
     <Box className={classes.component}>
@@ -35,7 +38,7 @@ const Comment = ({ comment }) => {
         <Typography className={classes.date}>
           {new Date(comment.date).toDateString()}
         </Typography>
-        <Delete className={classes.delete} />
+        <Delete onClick={() => removeComment()} className={classes.delete} />
       </Box>
       <Typography>{comment.comments}</Typography>
     </Box>
