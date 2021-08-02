@@ -9,3 +9,12 @@ export const newComment = async (request, response) => {
     response.status(500).json(error);
   }
 };
+
+export const getComments = async (request, response) => {
+  try {
+    const comments = await Comment.find({ postId: request.params.id });
+    response.status(200).json(comment);
+  } catch (error) {
+    response.status(500).json(error);
+  }
+};

@@ -1,6 +1,6 @@
 import { Box, TextareaAutosize, Button, makeStyles } from "@material-ui/core";
-import { useState } from "react";
-import { newComment } from "../../service/api";
+import { useState, useEffect } from "react";
+import { newComment, getComment } from "../../service/api";
 const useStyles = makeStyles({
   component: {
     marginTop: 100,
@@ -32,6 +32,15 @@ function Comments({ post }) {
   const url = "https://static.thenounproject.com/png/12017-200.png";
 
   const [comment, setComment] = useState(initialValue);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      let response = await getComment(post._id);
+      setComments(response);
+    };
+    getData();
+  }, []);
 
   const handleChange = (e) => {
     setComment({

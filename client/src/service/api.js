@@ -60,3 +60,12 @@ export const newComment = async (data) => {
     console.log("Error while fetching comments", error);
   }
 };
+
+export const getComment = async (id) => {
+  try {
+    let response = await axios.get(`${URL}/comment/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log("Error while getCommentsApi comments", error);
+  }
+};
