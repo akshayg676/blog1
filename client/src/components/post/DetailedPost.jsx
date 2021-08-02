@@ -93,7 +93,10 @@ function DetailedPost({ match }) {
       <Box className={classes.subHeading}>
         <Link to={`/?username=${post.username}`} className={classes.link}>
           <Typography>
-            Author: <span style={{ fontWeight: 600 }}>{post.username}</span>
+            Author:{" "}
+            <span style={{ fontWeight: 600, textTransform: "uppercase" }}>
+              {post.username}
+            </span>
           </Typography>
         </Link>
         <Typography>{new Date(post.createDate).toDateString()}</Typography>
