@@ -49,7 +49,7 @@ function Categories() {
         </TableHead>
         <TableBody>
           {array.map((items) => (
-            <TableRow>
+            <TableRow key={items}>
               <TableCell style={{ textAlign: "center" }}>
                 <Link to={`/?category=${items}`} className={classes.link}>
                   {items}

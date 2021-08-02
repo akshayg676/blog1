@@ -5,6 +5,7 @@ import { OktaAuth, toRelativeUrl } from "@okta/okta-auth-js";
 
 import { Box } from "@material-ui/core";
 import Header from "./components/header/Header.jsx";
+import Footer from "./components/footer/Footer.jsx";
 import Home from "./components/home/Home.jsx";
 import DetailedPost from "./components/post/DetailedPost.jsx";
 import CreatePost from "./components/post/CreatePost.jsx";
@@ -46,6 +47,7 @@ function AppWithRouterAccess() {
           <Route path="/update/:id" component={UpdatePost} />
         </Switch>
       </Box>
+      <SecureRoute path="/" component={Footer} />
     </Security>
   );
 }
