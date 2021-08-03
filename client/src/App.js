@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Box } from "@material-ui/core";
+import { BrowserRouter } from "react-router-dom";
 import AppWithRouterAccess from "./AppWithRouterAccess";
 
 // import Header from "./components/header/Header.jsx";

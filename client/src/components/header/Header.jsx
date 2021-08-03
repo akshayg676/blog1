@@ -5,8 +5,8 @@ import { useOktaAuth } from "@okta/okta-react";
 
 const useStyles = makeStyles({
   component: {
-    backgroundColor: "#fff",
-    color: "#303030",
+    backgroundColor: "#060042",
+    color: "#fff",
   },
   container: {
     justifyContent: "center",
@@ -41,6 +41,7 @@ function Header() {
         textTransform: "uppercase",
         fontSize: 16,
         cursor: "pointer",
+        color: "#fff",
       }}
     >
       LOGOUT
