@@ -1,25 +1,28 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import AppWithRouterAccess from "./AppWithRouterAccess";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Box } from "@material-ui/core";
 
-// import Header from "./components/header/Header.jsx";
-// import Home from "./components/home/Home.jsx";
-// import DetailedPost from "./components/post/DetailedPost.jsx";
-// import CreatePost from "./components/post/CreatePost.jsx";
-// import UpdatePost from "./components/post/UpdatePost.jsx";
+import Header from "./components/header/Header.jsx";
+import Footer from "./components/footer/Footer.jsx";
+import Home from "./components/home/Home.jsx";
+import About from "./components/about/About.jsx";
+import DetailedPost from "./components/post/DetailedPost.jsx";
+import CreatePost from "./components/post/CreatePost.jsx";
+import UpdatePost from "./components/post/UpdatePost.jsx";
 function App() {
   return (
     <BrowserRouter>
-      <AppWithRouterAccess />
-      {/* <Header />
+      <Header />
       <Box style={{ marginTop: 64 }}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/details/:id" component={DetailedPost} />
           <Route path="/create" component={CreatePost} />
           <Route path="/update/:id" component={UpdatePost} />
+          <Route exact path="/about" component={About} />
         </Switch>
-      </Box> */}
+      </Box>
+      <Footer />
     </BrowserRouter>
   );
 }

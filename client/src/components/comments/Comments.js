@@ -5,9 +5,13 @@ import { newComment, getComment } from "../../service/api";
 import Comment from "./Comment.jsx";
 
 const useStyles = makeStyles({
+  commentSection: {
+    marginBottom: 50,
+  },
   component: {
     marginTop: 100,
     display: "flex",
+    marginBottom: 40,
   },
   image: {
     width: 50,
@@ -61,7 +65,7 @@ function Comments({ post }) {
   };
 
   return (
-    <Box>
+    <Box className={classes.commentSection}>
       <Box className={classes.component}>
         <img src={url} alt="" className={classes.image} />
         <TextareaAutosize

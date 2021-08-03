@@ -9,7 +9,7 @@ import Comments from "../comments/Comments.js";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    padding: "0 100px",
+    padding: "20px 100px",
     [theme.breakpoints.down("md")]: {
       padding: "0 50px",
     },

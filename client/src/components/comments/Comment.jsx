@@ -1,5 +1,5 @@
 import { Typography, Box, makeStyles } from "@material-ui/core";
-import { Delete } from "@material-ui/icons";
+// import { Delete } from "@material-ui/icons";
 import { deleteComment } from "../../service/api.js";
 
 const useStyles = makeStyles({
@@ -30,18 +30,18 @@ const useStyles = makeStyles({
 const Comment = ({ comment, setToggle }) => {
   const classes = useStyles();
 
-  const removeComment = async () => {
-    await deleteComment(comment._id);
-    setToggle((prev) => !prev);
-  };
+  // const removeComment = async () => {
+  //   await deleteComment(comment._id);
+  //   setToggle((prev) => !prev);
+  // };
   return (
     <Box className={classes.component}>
       <Box className={classes.container}>
-        <Typography className={classes.name}>{comment.name}</Typography>
+        {/* <Typography className={classes.name}>{comment.name}</Typography> */}
         <Typography className={classes.date}>
           {new Date(comment.date).toDateString()}
         </Typography>
-        <Delete onClick={() => removeComment()} className={classes.delete} />
+        {/* <Delete onClick={() => removeComment()} className={classes.delete} /> */}
       </Box>
       <Typography>{comment.comments}</Typography>
     </Box>
